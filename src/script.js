@@ -76,7 +76,8 @@ function getForcast(coords) {
 }
 
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#temp");
+  let mainTemp = document.querySelector(".mainTemp");
+  //let temperatureElement = document.querySelector("#temp");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#humidity");
@@ -84,9 +85,11 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = Math.round(response.data.main.temp);
 
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  //mainTemp.innerHTML = Math.round(response.data.main.temp);
+
+  mainTemp.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -108,7 +111,7 @@ function searchPlace(city) {
 
 function displayWeatherDetails(response) {
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temp").innerHTML = Math.round(
+  document.querySelector("#.mainTemp").innerHTML = Math.round(
     response.data.main.temp
   );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
